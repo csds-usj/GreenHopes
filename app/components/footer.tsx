@@ -3,8 +3,10 @@ import { Link } from "react-router";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-foreground text-muted">
-      <hr />
+    <footer
+      className="bg-foreground text-muted"
+      style={{ background: "var(--footer-gradient)" }}
+    >
       <div className="mx-auto w-full max-w-screen-xl xl:pb-2">
         <div className="md:flex md:justify-between px-8 p-4 py-16 sm:pb-16 gap-4">
           <div className="mb-12 flex-col flex gap-4">
@@ -12,7 +14,7 @@ const Footer: React.FC = () => {
               <img
                 src="/green-hopes.svg"
                 alt="Green Hopes"
-                className="w-[150px] h-auto"
+                className="w-auto h-[48px]"
               />
               <span className="sr-only">JESA</span>
             </Link>
@@ -38,48 +40,64 @@ const Footer: React.FC = () => {
               Sri Jayewardenepura Contacts
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-2">
             <div>
-              <h2 className="mb-6 tracking-tighter font-medium">Show</h2>
+              <h2 className="mb-6 tracking-tighter font-medium uppercase">
+                Show
+              </h2>
               <ul className="gap-4 grid">
                 <li>
-                  <Link className="cursor-pointer duration-200 " to="/awards">
+                  <Link
+                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
+                    to="/awards"
+                  >
                     Awards
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="cursor-pointer duration-200 "
+                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
                     to="/hall-of-fame"
                   >
                     Hall of Fame
                   </Link>
                 </li>
                 <li>
-                  <Link className="cursor-pointer duration-200 " to="/terms">
+                  <Link
+                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
+                    to="/terms"
+                  >
                     Terms & Conditions
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 tracking-tighter font-medium">Show</h2>
+              <h2 className="mb-6 tracking-tighter font-medium uppercase">
+                Show
+              </h2>
               <ul className="gap-4 grid">
                 <li>
-                  <Link className="cursor-pointer duration-200 " to="/awards">
+                  <Link
+                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
+                    to="/awards"
+                  >
                     Awards
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="cursor-pointer duration-200 "
+                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
                     to="/hall-of-fame"
                   >
                     Hall of Fame
                   </Link>
                 </li>
                 <li>
-                  <Link className="cursor-pointer duration-200 " to="/terms">
+                  <Link
+                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
+                    to="/terms"
+                  >
                     Terms & Conditions
                   </Link>
                 </li>

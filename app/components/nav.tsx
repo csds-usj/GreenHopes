@@ -22,37 +22,40 @@ const Nav: React.FC = () => {
           />
           <span className="sr-only">Green Hopes</span>
         </Link>
-        {/* Main Navigation - Desktop (aligned left after logo) */}
-        <ul className="hidden lg:flex items-center gap-x-6">
-          <li>
-            <Link
-              to="/awards"
-              className="text-md transition-colors hover:text-primary"
-            >
-              Awards
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/hall-of-fame"
-              className="text-md transition-colors hover:text-primary"
-            >
-              Hall of Fame
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/terms"
-              className="text-md transition-colors hover:text-primary"
-            >
-              Terms & Conditions
-            </Link>
-          </li>
-        </ul>
-        {/* Spacer to push social links to right */}
-        <div className="flex-1 hidden lg:block" />
+        {/* Centered Glassy Nav Links */}
+        <div
+          className="hidden xl:flex items-center absolute left-1/2 -translate-x-1/2 rounded-full border border-white/50 text-sm font-medium  shadow-lg shadow-gray-800/5 ring-1 ring-gray-800/[.075] backdrop-blur-xl px-8 py-3"
+          style={{ background: "var(--nav-gradient)" }}
+        >
+          <ul className="flex items-center gap-x-6">
+            <li>
+              <Link
+                to="/awards"
+                className="transition-colors hover:text-primary"
+              >
+                Awards
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/hall-of-fame"
+                className="transition-colors hover:text-primary"
+              >
+                Hall of Fame
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/terms"
+                className="transition-colors hover:text-primary"
+              >
+                Terms & Conditions
+              </Link>
+            </li>
+          </ul>
+        </div>
         {/* Social Links - Desktop right corner */}
-        <div className="hidden lg:flex items-center gap-x-4">
+        <div className="hidden lg:flex items-center gap-x-4 ml-auto">
           <a
             href="https://facebook.com/greenhopesofficial"
             target="_blank"

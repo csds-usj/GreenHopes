@@ -49,6 +49,19 @@ body {
 
 :root {
   --radius: 0.625rem;
+  /* Gradient colors - Green undertones */
+  --footer-gradient: linear-gradient(
+    180deg,
+    oklch(0.2 0.1 135) 0%,
+    oklch(0.28 0.1 135) 100%
+  );
+
+  --nav-gradient: linear-gradient(
+    90deg,
+    oklch(99.25% 0.01565 130.676) 0%,
+    oklch(97.775% 0.03546 129.758) 50%,
+    oklch(99.507% 0.01 131.776) 100%
+  );
 
   /* Base colors - Clean foundation with green undertones */
   --background: oklch(1 0 0); /* Pure white */
@@ -94,5 +107,16 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .cta-title {
+    @apply text-balance font-medium text-center leading-tight tracking-tight text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+    font-family: var(--font-title);
+  }
+  .secondary-title {
+    @apply text-balance font-medium leading-tight tracking-tight text-3xl lg:text-4xl xl:text-5xl;
+    font-family: var(--font-title);
   }
 }

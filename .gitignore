@@ -8,6 +8,7 @@
 # Environment files
 .env
 .env.*
+!.env.example
 
 # Project setup files
 SETUP.md
