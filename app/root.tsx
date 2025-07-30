@@ -50,14 +50,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
           className="flex min-w-[340px] flex-col font-sans antialiased overflow-hidden"
           style={{ background: "var(--background-gradient)" }}
         >
-          <header className="fixed left-0 right-0 z-50 bg-background px-safe pt-safe lg:h-16 flex justify-center px-5">
+          <header className="fixed left-0 right-0 z-50 bg-background px-safe pt-safe lg:h-16 flex justify-center px-7.5">
             <Nav />
           </header>
           <div className="min-h-screen">{children}</div>
         </main>
-        <Footer />
         <ScrollRestoration />
         <Scripts />
+        <Footer />
       </body>
     </html>
   );

@@ -49,24 +49,43 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.147 0.004 49.25);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.147 0.004 49.25);
-  --primary: oklch(0.216 0.006 56.043);
-  --primary-foreground: oklch(0.985 0.001 106.423);
-  --secondary: oklch(0.97 0.001 106.424);
-  --secondary-foreground: oklch(0.216 0.006 56.043);
-  --muted: oklch(0.97 0.001 106.424);
-  --muted-foreground: oklch(0.553 0.013 58.071);
-  --accent: oklch(0.97 0.001 106.424);
-  --accent-foreground: oklch(0.216 0.006 56.043);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.923 0.003 48.717);
-  --input: oklch(0.923 0.003 48.717);
-  --ring: oklch(0.709 0.01 56.259);
+
+  /* Base colors - Clean foundation with green undertones */
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: oklch(0.35 0.1 135); /* Dark gray-green for strong contrast */
+
+  /* Card system - Elevated surfaces */
+  --card: oklch(0.98 0.01 125); /* Slightly off-white with green hint */
+  --card-foreground: oklch(0.3 0.08 135); /* Darker gray-green */
+
+  /* Popover system - Floating elements */
+  --popover: oklch(0.98 0.01 125); /* Same as card */
+  --popover-foreground: oklch(0.3 0.08 135); /* Same as card foreground */
+
+  /* Primary system - Main brand green (#5BB434) */
+  --primary: oklch(0.7 0.18 135); /* Vibrant green primary */
+  --primary-foreground: oklch(1 0 0); /* Pure white text on primary */
+
+  /* Secondary system - Softer green (#81CC2B) */
+  --secondary: oklch(0.94 0.08 130); /* Light green background */
+  --secondary-foreground: oklch(0.38 0.12 140); /* Dark green text */
+
+  /* Muted system - Subtle backgrounds */
+  --muted: oklch(0.97 0.07 125); /* Muted green-gray */
+  --muted-foreground: oklch(0.3 0.08 135); /* Consistent with card foreground */
+
+  /* Accent system - Bright highlight (#A5D71E) */
+  --accent: oklch(0.85 0.15 115); /* Bright lime accent */
+  --accent-foreground: oklch(0.25 0.12 140); /* Strong dark green text */
+
+  /* Destructive system - Balanced red */
+  --destructive: oklch(0.54 0.19 27); /* Red for destructive actions */
+  --destructive-foreground: oklch(1 0 0); /* White text on red */
+
+  /* Interactive elements */
+  --border: oklch(0.85 0.08 130); /* Darker green-tinted borders */
+  --input: oklch(0.94 0.12 130); /* Input background with green tint */
+  --ring: oklch(0.55 0.15 135); /* Darker focus ring for visibility */
 }
 
 @layer base {
