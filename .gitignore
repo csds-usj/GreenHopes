@@ -4,3 +4,15 @@
 # React Router
 /.react-router/
 /build/
+
+# Environment files
+.env
+.env.*
+
+# Project setup files
+SETUP.md
+wrangler.toml
+
+# Drizzle ORM
+/drizzle/
+migrations/
