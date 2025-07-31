@@ -1,19 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Input } from "~/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select";
+
 // Removed Select import to use native HTML select instead
 import PlantCard from "~/components/plant-card";
 import { getAllPlants } from "~/lib/database";
 import { Search, Loader2 } from "lucide-react";
 
 // Helper function to normalize category for consistent filtering
-const normalizeCategory = (category: string | null): 'native' | 'endemic' | 'exotic' | 'poisonous' => {
-  if (!category) return 'native';
+const normalizeCategory = (
+  category: string | null
+): "native" | "endemic" | "exotic" | "poisonous" => {
+  if (!category) return "native";
   const normalized = category.toLowerCase().trim();
-  if (normalized.includes('endemic')) return 'endemic';
-  if (normalized.includes('exotic')) return 'exotic';
-  if (normalized.includes('poison')) return 'poisonous';
-  return 'native';
+  if (normalized.includes("endemic")) return "endemic";
+  if (normalized.includes("exotic")) return "exotic";
+  if (normalized.includes("poison")) return "poisonous";
+  return "native";
 };
 
 const NatureCodeIndex = () => {
@@ -61,7 +71,7 @@ const NatureCodeIndex = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-8 py-16">
       <header className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Nature Code</h1>
         <p className="text-gray-600">Discover the plants in our collection</p>
@@ -78,17 +88,18 @@ const NatureCodeIndex = () => {
             className="pl-10"
           />
         </div>
-        <select
-          value={categoryFilter}
-          onChange={(e) => setCategoryFilter(e.target.value)}
-          className="w-full sm:w-48 h-9 px-3 py-2 text-sm border border-input bg-transparent rounded-md shadow-xs focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
-        >
-          <option value="all">All Categories</option>
-          <option value="native">Native</option>
-          <option value="endemic">Endemic</option>
-          <option value="exotic">Exotic</option>
-          <option value="poisonous">Poisonous</option>
-        </select>
+        <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+          <SelectTrigger className="w-full sm:w-48">
+            <SelectValue placeholder="Filter by category" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Categories</SelectItem>
+            <SelectItem value="native">Native</SelectItem>
+            <SelectItem value="endemic">Endemic</SelectItem>
+            <SelectItem value="exotic">Exotic</SelectItem>
+            <SelectItem value="poisonous">Poisonous</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Results Count */}

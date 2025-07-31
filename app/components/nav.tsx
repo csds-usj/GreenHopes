@@ -24,7 +24,7 @@ const Nav: React.FC = () => {
         </Link>
         {/* Centered Glassy Nav Links */}
         <div
-          className="hidden xl:flex items-center absolute left-1/2 -translate-x-1/2 rounded-full border border-white/50 text-sm font-medium  shadow-lg shadow-gray-800/5 ring-1 ring-gray-800/[.075] backdrop-blur-xl px-8 py-3"
+          className="hidden xl:flex items-center absolute left-1/2 -translate-x-1/2 rounded-full border border-white/50 text-sm font-medium  shadow-lg shadow-gray-800/5 ring-1 ring-gray-800/[.075] backdrop-blur-xl px-8 py-2.5"
           style={{ background: "var(--nav-gradient)" }}
         >
           <ul className="flex items-center gap-x-6">

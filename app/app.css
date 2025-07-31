@@ -111,6 +111,10 @@ body {
 }
 
 @layer components {
+  .title {
+    @apply text-balance font-semibold text-center leading-10 md:leading-12 lg:leading-16 xl:leading-18 tracking-tighter text-[40px] md:text-[48px] lg:text-[60px] xl:text-[72px];
+    font-family: var(--font-title);
+  }
   .cta-title {
     @apply text-balance font-medium text-center leading-tight tracking-tight text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
     font-family: var(--font-title);
