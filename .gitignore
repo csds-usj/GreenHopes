@@ -12,8 +12,16 @@
 
 # Project setup files
 SETUP.md
-wrangler.toml
+EX-2.md
+EXECUTE.md
 
 # Drizzle ORM
-/drizzle/
+/drizzle/data/
+/drizzle/migrations/
+/drizzle/seed/
+/scripts/
 migrations/
+
+#Cloudflare
+/.wrangler/
+wrangler.toml

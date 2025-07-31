@@ -7,8 +7,8 @@
 
     // Enable code actions on save for linting (eslint)
     "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-        "source.fixAll.eslint": true
+        "source.fixAll": "explicit",
+        "source.fixAll.eslint": "explicit"
     },
 
     // Enable TypeScript and JavaScript validation

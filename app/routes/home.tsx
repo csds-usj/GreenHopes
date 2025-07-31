@@ -16,7 +16,7 @@ export default function Home() {
       >
         <picture>
           <img
-            src="/bg.png"
+            src="/bg.svg"
             className="w-full h-full object-cover object-bottom max-w-none"
             alt="Background"
             draggable="false"
