@@ -43,62 +43,38 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-2">
             <div>
               <h2 className="mb-6 tracking-tighter font-medium uppercase">
-                Show
+                Company
               </h2>
               <ul className="gap-4 grid">
                 <li>
                   <Link
                     className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
-                    to="/awards"
+                    to="/about"
                   >
-                    Awards
+                    About
                   </Link>
                 </li>
                 <li>
                   <Link
                     className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
-                    to="/hall-of-fame"
+                    to="/timeline"
                   >
-                    Hall of Fame
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
-                    to="/terms"
-                  >
-                    Terms & Conditions
+                    Timeline
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
               <h2 className="mb-6 tracking-tighter font-medium uppercase">
-                Show
+                Projects
               </h2>
               <ul className="gap-4 grid">
                 <li>
                   <Link
                     className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
-                    to="/awards"
+                    to="/nature-code"
                   >
-                    Awards
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
-                    to="/hall-of-fame"
-                  >
-                    Hall of Fame
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="cursor-pointer duration-200 opacity-60 hover:opacity-100"
-                    to="/terms"
-                  >
-                    Terms & Conditions
+                    Nature Code
                   </Link>
                 </li>
               </ul>

@@ -56,6 +56,12 @@ body {
     oklch(0.28 0.1 135) 100%
   );
 
+  --nature-code-gradient: linear-gradient(
+    180deg,
+    oklch(0.3 0.1 135) 0%,
+    oklch(0.25 0.1 135) 100%
+  );
+
   --nav-gradient: linear-gradient(
     90deg,
     oklch(99.25% 0.01565 130.676) 0%,
@@ -120,7 +126,7 @@ body {
     font-family: var(--font-title);
   }
   .secondary-title {
-    @apply text-balance font-medium leading-tight tracking-tight text-3xl lg:text-4xl xl:text-5xl;
+    @apply text-balance font-semibold leading-tight tracking-tight text-4xl xl:text-5xl;
     font-family: var(--font-title);
   }
 }

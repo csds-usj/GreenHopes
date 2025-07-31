@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Menu, X, Facebook } from "lucide-react";
+import { Menu, X, Facebook, ChevronDown } from "lucide-react";
 import { Link } from "react-router";
+import Gradient from "~/components/gradient";
+import { Popover, PopoverTrigger, PopoverContent } from "~/components/ui/popover";
 
 const Nav: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -29,27 +32,51 @@ const Nav: React.FC = () => {
         >
           <ul className="flex items-center gap-x-6">
             <li>
+              <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+                <PopoverTrigger asChild>
+                  <div 
+                    className="group"
+                    onMouseEnter={() => setIsPopoverOpen(true)}
+                    onMouseLeave={() => setIsPopoverOpen(false)}
+                  >
+                    <button className="flex items-center gap-1 transition-colors hover:text-primary group-hover:text-primary">
+                      Projects
+                      <ChevronDown className="h-3 w-3" />
+                    </button>
+                  </div>
+                </PopoverTrigger>
+                <PopoverContent 
+                  className="w-40 p-1 shadow-sm" 
+                  sideOffset={8}
+                  onOpenAutoFocus={(e) => e.preventDefault()}
+                  onMouseEnter={() => setIsPopoverOpen(true)}
+                  onMouseLeave={() => setIsPopoverOpen(false)}
+                >
+                  <div className="space-y-0.5">
+                    <Link
+                      to="/nature-code"
+                      className="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                    >
+                      Nature Code
+                    </Link>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </li>
+            <li>
               <Link
-                to="/awards"
+                to="/about"
                 className="transition-colors hover:text-primary"
               >
-                Awards
+                About
               </Link>
             </li>
             <li>
               <Link
-                to="/hall-of-fame"
+                to="/timeline"
                 className="transition-colors hover:text-primary"
               >
-                Hall of Fame
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/terms"
-                className="transition-colors hover:text-primary"
-              >
-                Terms & Conditions
+                Timeline
               </Link>
             </li>
           </ul>
@@ -80,6 +107,12 @@ const Nav: React.FC = () => {
       {isMenuOpen && (
         <div className="fixed bg-background inset-x-0 bottom-0 z-40 block lg:hidden top-16">
           <div className="flex h-full w-full flex-col justify-between text-left pt-[55px]">
+            <Gradient
+              className="-mt-[64px]"
+              style={{
+                clipPath: "inset(64px 0 0 0)",
+              }}
+            />
             <nav className="px-7.5 md:px-8">
               <ul className="flex w-full flex-col overflow-y-auto">
                 <li className="border-b  group/navitem relative">
@@ -88,8 +121,8 @@ const Nav: React.FC = () => {
                     variant="ghost"
                     className="flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none transition-colors duration-200 h-auto justify-start"
                   >
-                    <Link to="/awards" onClick={toggleMenu}>
-                      Awards
+                    <Link to="/nature-code" onClick={toggleMenu}>
+                      Nature Code
                     </Link>
                   </Button>
                 </li>
@@ -99,8 +132,19 @@ const Nav: React.FC = () => {
                     variant="ghost"
                     className="flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none  transition-colors duration-200  h-auto justify-start"
                   >
-                    <Link to="/hall-of-fame" onClick={toggleMenu}>
-                      Hall of Fame
+                    <Link to="/about" onClick={toggleMenu}>
+                      About
+                    </Link>
+                  </Button>
+                </li>
+                <li className="border-b group/navitem relative">
+                  <Button
+                    asChild
+                    variant="ghost"
+                    className="flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none  transition-colors duration-200  h-auto justify-start"
+                  >
+                    <Link to="/timeline" onClick={toggleMenu}>
+                      Timeline
                     </Link>
                   </Button>
                 </li>
