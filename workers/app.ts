@@ -23,11 +23,17 @@ const requestHandler = createRequestHandler(
 
 export default {
   async fetch(request, env, ctx) {
-    const db = drizzle(env.DB, { schema });
-
-    return requestHandler(request, {
-      cloudflare: { env, ctx },
-      db,
-    });
+    try {
+      const db = drizzle(env.DB, { schema });
+      return await requestHandler(request, {
+        cloudflare: { env, ctx },
+        db,
+      });
+    } catch (error) {
+      return new Response(
+        `Worker error: ${error instanceof Error ? error.message : String(error)}`,
+        { status: 500, headers: { "Content-Type": "text/plain" } }
+      );
+    }
   },
 } satisfies ExportedHandler<Env>;
