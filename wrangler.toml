@@ -1,8 +1,0 @@
-name = "green-hopes"
-compatibility_date = "2024-01-15"
-main = "./workers/app.ts"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "green-hopes-db"
-database_id = "4cd0dd14-b956-4781-a120-466fc05472bb"
