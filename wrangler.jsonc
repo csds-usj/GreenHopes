@@ -5,6 +5,7 @@
   "observability": {
     "enabled": true,
   },
+  "compatibility_flags": ["nodejs_compat"],
   "main": "./workers/app.ts",
   "d1_databases": [
     {
