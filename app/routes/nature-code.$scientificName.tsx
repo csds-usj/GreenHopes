@@ -1,15 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "react-router";
-import type { LoaderFunctionArgs } from "react-router";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   getPlantByScientificName,
   parseSlugToScientificName,
@@ -17,6 +10,18 @@ import {
 } from "~/lib/database";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import type { Route } from "../+types/root";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Nature Code | Plant Details" },
+    {
+      name: "description",
+      content:
+        "Learn about various plant species, their environmental value, and how to protect them. Explore detailed information on each plant including images, descriptions, and categories.",
+    },
+  ];
+}
 
 const categoryColors = {
   native: "bg-green-500 hover:bg-green-600 text-white",

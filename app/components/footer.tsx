@@ -1,4 +1,3 @@
-import { Facebook } from "lucide-react";
 import { Link } from "react-router";
 
 const Footer: React.FC = () => {
@@ -94,8 +93,20 @@ const Footer: React.FC = () => {
               href="https://facebook.com/greenhopesofficial"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-muted"
             >
-              <Facebook className="h-6 w-6 transition-colors" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32px"
+                height="32px"
+                className="fill-muted"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"
+                />
+              </svg>
               <span className="sr-only">Facebook</span>
             </a>
           </div>

@@ -12,7 +12,19 @@ import {
 // Removed Select import to use native HTML select instead
 import PlantCard from "~/components/plant-card";
 import { getAllPlants } from "~/lib/database";
-import { Search, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import type { Route } from "../+types/root";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Nature Code by Green Hopes" },
+    {
+      name: "description",
+      content:
+        "Nature Code is a green innovation by the Career Skills Development Society that lets you scan QR codes on trees to discover species info, environmental value, and ways to protect them. The site also lets you search and filter plant data — turning every tree into a story worth discovering.",
+    },
+  ];
+}
 
 // Helper function to normalize category for consistent filtering
 const normalizeCategory = (

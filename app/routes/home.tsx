@@ -5,7 +5,11 @@ import { CtaButton } from "~/components/ui/cta-button";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Green Hopes by CSDS" },
-    { name: "description", content: "Welcome to React Router!" },
+    {
+      name: "description",
+      content:
+        "Green Hopes is a environmental initiative by the Career Guidance Unit of University of Sri Jayewardenepura, aiming to cultivate sustainability among students and the wider community through innovative phases like tree QR signage, reusable resources, school awareness programs, and conservation efforts.It reduces plastic waste, promotes awareness and fosters long-term environmental responsibility building a greener, cleaner, and a sustainable future for everyone.",
+    },
   ];
 }
 

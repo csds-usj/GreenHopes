@@ -1,6 +1,4 @@
 import type { Route } from "./+types/api.plants";
-import { drizzle } from "drizzle-orm/d1";
-import { trees } from "drizzle/schema";
 import { getPlantImageUrl } from "~/lib/database";
 
 // D1 HTTP API client
@@ -76,10 +74,12 @@ export async function loader({ request, context }: Route.LoaderArgs) {
       id: tree.id,
       number: tree.number || tree.id,
       name: tree.name,
-      scientificName: tree.scientificName || tree.scientific_name || tree.ScientificName,
+      scientificName:
+        tree.scientificName || tree.scientific_name || tree.ScientificName,
       group: tree.group,
       family: tree.family,
-      descriptionMd: tree.descriptionMd || tree.description_md || tree.description,
+      descriptionMd:
+        tree.descriptionMd || tree.description_md || tree.description,
       imageUrl: getPlantImageUrl(tree.name),
       category: tree.category || "native",
     }));
