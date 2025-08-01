@@ -2,6 +2,10 @@ import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
 import { createRequestHandler } from "react-router";
 import * as schema from "../drizzle/schema";
 
+interface Env {
+  DB: D1Database;
+}
+
 declare module "react-router" {
   export interface AppLoadContext {
     cloudflare: {
