@@ -1,7 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams, Link } from "react-router";
+import { useParams } from "react-router";
+import { Link } from "react-router";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "~/components/ui/breadcrumb";
+
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   getPlantByScientificName,
@@ -82,14 +92,27 @@ const PlantDetail = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Back Button */}
+      {/* Breadcrumbs */}
       <div className="mb-6">
-        <Button variant="outline" asChild>
-          <Link to="/nature-code">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Nature Code
-          </Link>
-        </Button>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/nature-code">Nature Code</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{plant?.name || "Plant Details"}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -137,12 +160,6 @@ const PlantDetail = () => {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="grid grid-cols-1 gap-3">
-                <div>
-                  <span className="font-medium text-gray-700">
-                    Tree Number:
-                  </span>
-                  <span className="ml-2 text-gray-900">#{plant.number}</span>
-                </div>
                 {plant.family && (
                   <div>
                     <span className="font-medium text-gray-700">Family:</span>

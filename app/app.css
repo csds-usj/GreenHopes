@@ -130,3 +130,32 @@ body {
     font-family: var(--font-title);
   }
 }
+
+/* Custom selected text highlight color */
+::selection {
+  background: oklch(0.7 0.18 135); /* Vibrant green primary */
+  color: oklch(1 0 0); /* Pure white */
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+  background: var(--muted);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--muted);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Firefox scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--muted);
+}

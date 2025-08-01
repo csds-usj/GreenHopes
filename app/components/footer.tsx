@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
             <p className="max-w-xs text-sm ">
               Career Skills Development Society • 2025/2026 <br />
               in collaboration with Career Guidance Unit of <br /> University of
-              Sri Jayewardenepura Contacts
+              Sri Jayewardenepura
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:gap-10 sm:grid-cols-2">
