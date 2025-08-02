@@ -1,3 +1,4 @@
+import Team from "../components/team";
 import type { Route } from "./+types/about";
 
 export function meta({}: Route.MetaArgs) {
@@ -36,7 +37,9 @@ export default function About() {
               beyond.
             </p>
           </header>
-          <div className="mb-6"></div>
+          <div className="mb-6 mt-10 md:mt-16 lg:mt-24">
+            <Team />
+          </div>
         </div>
       </div>
     </>
