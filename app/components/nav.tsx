@@ -22,21 +22,32 @@ const Nav: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Prevent any interference from other components
+  const handleNavClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
-      <nav className="container relative z-50 flex h-16 lg:h-full max-w-[1216px] items-center">
+      <nav
+        className="container relative z-50 flex h-16 lg:h-full max-w-[1216px] items-center md:px-0 overflow-x-hidden"
+        onClick={handleNavClick}
+      >
         {/* Logo */}
-        <Link to="/" className="flex items-center transition-colors mr-12">
+        <Link
+          to="/"
+          className="flex items-center transition-colors mr-4 md:mr-12 flex-shrink-0"
+        >
           <img
             src="/green-hopes.svg"
             alt="Green Hopes"
-            className="w-auto h-[48px]"
+            className="w-auto h-[48px] max-w-none"
           />
           <span className="sr-only">Green Hopes</span>
         </Link>
         {/* Centered Glassy Nav Links */}
         <div
-          className="hidden xl:flex items-center absolute left-1/2 -translate-x-1/2 rounded-full border border-white/50 text-sm font-medium  shadow-lg shadow-gray-800/5 ring-1 ring-gray-800/[.075] backdrop-blur-xl px-8 py-2.5"
+          className="hidden xl:flex items-center absolute left-1/2 -translate-x-1/2 rounded-full border border-white/50 text-sm font-medium shadow-lg shadow-gray-800/5 ring-1 ring-gray-800/[.075] backdrop-blur-xl px-8 py-2.5 max-w-[calc(100vw-2rem)]"
           style={{ background: "var(--nav-gradient)" }}
         >
           <ul className="flex items-center gap-x-6">
@@ -129,7 +140,7 @@ const Nav: React.FC = () => {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div
-          className={`fixed bg-background inset-x-0 bottom-0 z-40 block lg:hidden top-16 ${isMutedNav ? "nature-code-bg -mt-[64px] pt-[64px]" : ""}`}
+          className={`fixed bg-background inset-x-0 bottom-0 z-40 block lg:hidden top-16 overflow-x-hidden ${isMutedNav ? "nature-code-bg -mt-[64px] pt-[64px]" : ""}`}
           style={
             isMutedNav
               ? {
@@ -139,7 +150,7 @@ const Nav: React.FC = () => {
               : undefined
           }
         >
-          <div className="flex h-full w-full flex-col justify-between text-left pt-[55px]">
+          <div className="flex h-full w-full flex-col justify-between text-left pt-[55px] overflow-x-hidden">
             {/* Hide Gradient on muted nav pages */}
             {!isMutedNav && (
               <Gradient
@@ -149,7 +160,7 @@ const Nav: React.FC = () => {
                 }}
               />
             )}
-            <nav className="px-7.5 md:px-8">
+            <nav className="px-7.5 md:px-8 overflow-x-hidden">
               <ul className="flex w-full flex-col overflow-y-auto">
                 <li
                   className={`group/navitem relative ${isMutedNav ? "border-b border-muted/30" : "border-b"}`}

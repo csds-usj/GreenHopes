@@ -54,14 +54,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <main
-          className="flex min-w-[340px] flex-col font-sans antialiased overflow-hidden"
+          className="flex min-w-[340px] flex-col font-sans antialiased "
           style={{ background: "var(--background-gradient)" }}
         >
-          <header className="bg-background px-safe pt-safe lg:h-16 flex justify-center mt-4 px-7.5">
+          <header className="bg-background px-safe pt-safe lg:h-16 flex justify-center mt-4 px-7.5 ">
             <Gradient />
             <Nav />
           </header>
-          <div className="min-h-screen">{children}</div>
+          <div className="min-h-screen ">{children}</div>
         </main>
         <ScrollRestoration />
         <Scripts />

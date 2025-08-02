@@ -32,7 +32,7 @@ export default function Home() {
         </picture>
       </div> */}
       <section className="relative text-foreground w-full overflow-x-hidden pt-[64px] md:pt-[96px] lg:pt-[124px] ">
-        <div className="relative flex flex-col items-start sm:items-center sm:text-center z-10 px-6 pt-12 pb-32 max-w-7xl mx-auto">
+        <div className="relative flex flex-col items-start sm:items-center sm:text-center z-10 px-6 pt-12 pb-20 max-w-7xl mx-auto">
           <h1 className="title mb-5 -mt-4 sm:-mt-5 lg:-mt-6 xl:mt-[-26px] text-title text-left sm:text-center">
             For a Sustainable Future from <br className="hidden lg:block" />
             the Next <span className="text-primary ">Generation</span>

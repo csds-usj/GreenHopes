@@ -129,6 +129,12 @@ body {
     @apply text-balance font-semibold leading-tight tracking-tighter text-4xl xl:text-5xl;
     font-family: var(--font-title);
   }
+
+  /* Utility to prevent any accidental horizontal overflow */
+  .no-horizontal-overflow {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 }
 
 /* Custom selected text highlight color */

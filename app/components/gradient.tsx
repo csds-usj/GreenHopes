@@ -10,7 +10,7 @@ export default function Gradient({
   return (
     <svg
       className={cn(
-        "pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-full min-w-[80rem] h-auto",
+        "pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[100vw] h-auto overflow-hidden",
         className
       )}
       width="1171"

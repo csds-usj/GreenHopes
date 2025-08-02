@@ -16,7 +16,7 @@ export default function About() {
     <>
       {/* Gradient Background Overlay */}
       <div
-        className="absolute top-0 left-0 right-0 h-[420px] md:h-[500px] z-0"
+        className="absolute top-0 left-0 right-0 h-[420px] z-0"
         style={{
           background: "var(--nature-code-gradient)",
         }}

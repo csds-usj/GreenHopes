@@ -42,7 +42,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="w-full py-34 relative">
+    <section className="w-full md:px-8 py-20 lg:py-32 relative">
       <div
         className="absolute left-0 top-0 w-full h-full pointer-events-none"
         style={{
@@ -69,7 +69,7 @@ export default function Testimonials() {
                   loading="lazy"
                   width={48}
                   height={48}
-                  className="size-10 rounded-full object-cover"
+                  className="size-12 rounded-full object-cover"
                   src={t.image}
                   style={{ color: "transparent" }}
                 />

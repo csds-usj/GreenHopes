@@ -2,7 +2,7 @@ import Work from "./work";
 
 export default function Intro() {
   return (
-    <section className="w-full py-34 relative">
+    <section className="w-full md:px-8 py-20 lg:py-32 relative">
       <div
         className="absolute left-0 top-0 w-full h-full pointer-events-none"
         style={{
