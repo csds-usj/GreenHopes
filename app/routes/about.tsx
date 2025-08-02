@@ -29,7 +29,7 @@ export default function About() {
             <h1 className="secondary-title text-white mb-5">
               What&apos;s Green Hopes All About?
             </h1>
-            <p className="text-base lg:text-[18px] tracking-prose max-w-[24rem] md:max-w-[30rem] lg:max-w-[46.875rem] sm:mx-auto text-white/80 ">
+            <p className="text-base lg:text-[18px] tracking-prose max-w-[24rem] md:max-w-[30rem] lg:max-w-[46.875rem] md:mx-auto text-white/80 ">
               Green Hopes empowers communities for a greener, sustainable future
               through nature code, reusable resources, education, and
               restoration. We unite people to take meaningful action for the
