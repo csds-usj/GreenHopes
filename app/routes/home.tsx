@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { CtaButton } from "~/components/ui/cta-button";
+import Testimonials from "~/components/testimonials";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -46,6 +47,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <Testimonials />
       </section>
     </>
   );
