@@ -3,23 +3,39 @@ const testimonials = [
     quote:
       "The University of Sri Jayewardenepura is committed to academic excellence and innovation.",
     name: "Senior Professor Pathmalal M. Manage",
-    title: "Vice Chancellor, University of Sri Jayewardenepura",
+    title: (
+      <>
+        Vice Chancellor,
+        <br />
+        University of Sri Jayewardenepura
+      </>
+    ),
     image: "/img/testimonials/prof_manage.png",
   },
   {
     quote:
       "The Career Guidance Unit empowers students to achieve their professional goals and aspirations.",
     name: "Dr. Eranga Jayasekara",
-    title:
-      "Director of Career Guidance Unit, University of Sri Jayewardenepura",
+    title: (
+      <>
+        Director of Career Guidance Unit,
+        <br />
+        University of Sri Jayewardenepura
+      </>
+    ),
     image: "/img/testimonials/dr_eranga.png",
   },
   {
     quote:
       "The Career Guidance Unit empowers students to achieve their professional goals and aspirations.",
     name: "Mrs. Chathurangani Tennakoon",
-    title:
-      "Career Adviser of Career Guidance Unit, University of Sri Jayewardenepura",
+    title: (
+      <>
+        Career Adviser of Career Guidance Unit,
+        <br />
+        University of Sri Jayewardenepura
+      </>
+    ),
     image: "/img/testimonials/mrs_chathu.png",
   },
 ];
@@ -38,7 +54,7 @@ export default function Testimonials() {
         }}
       />
       <div className="mx-auto max-w-[1216px] relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left px-6 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left px-6 md:px-0">
           {testimonials.map((t, i) => (
             <div
               key={i}
@@ -61,7 +77,9 @@ export default function Testimonials() {
                   <p className="text-sm font-medium whitespace-nowrap">
                     {t.name}
                   </p>
-                  <p className="text-xs text-gray-600 truncate">{t.title}</p>
+                  <p className="text-xs text-muted-foreground/70 truncate">
+                    {t.title}
+                  </p>
                 </div>
               </div>
             </div>
