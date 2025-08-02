@@ -13,7 +13,7 @@ import {
 import PlantCard from "~/components/plant-card";
 import { getAllPlants } from "~/lib/database";
 import { Loader2 } from "lucide-react";
-import type { Route } from "../+types/root";
+import type { Route } from "./+types/nature-code-index";
 
 export function meta({}: Route.MetaArgs) {
   return [

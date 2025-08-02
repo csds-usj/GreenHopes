@@ -20,7 +20,7 @@ import {
 } from "~/lib/database";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import type { Route } from "../+types/root";
+import type { Route } from "./+types/nature-code.$scientificName";
 
 export function meta({}: Route.MetaArgs) {
   return [

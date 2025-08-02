@@ -14,7 +14,9 @@ const Nav: React.FC = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const location = useLocation();
-  const isNatureCode = location.pathname === "/nature-code";
+  const isMutedNav = ["/nature-code", "/about", "/timeline"].includes(
+    location.pathname
+  );
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -99,11 +101,7 @@ const Nav: React.FC = () => {
               xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
-              className={`${
-                location.pathname === "/nature-code"
-                  ? " text-muted"
-                  : "text-muted-foreground"
-              }`}
+              className={`${isMutedNav ? " text-muted" : "text-muted-foreground"}`}
               viewBox="0 0 24 24"
             >
               <path
@@ -117,13 +115,13 @@ const Nav: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className={`lg:hidden transition-colors ml-auto ${isNatureCode ? "text-muted" : ""}`}
+          className={`lg:hidden transition-colors ml-auto ${isMutedNav ? "text-muted" : ""}`}
           type="button"
         >
           {isMenuOpen ? (
-            <X size={24} className={isNatureCode ? "text-muted" : ""} />
+            <X size={24} className={isMutedNav ? "text-muted" : ""} />
           ) : (
-            <Menu size={24} className={isNatureCode ? "text-muted" : ""} />
+            <Menu size={24} className={isMutedNav ? "text-muted" : ""} />
           )}
         </button>
       </nav>
@@ -131,9 +129,9 @@ const Nav: React.FC = () => {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div
-          className={`fixed bg-background inset-x-0 bottom-0 z-40 block lg:hidden top-16 ${isNatureCode ? "nature-code-bg -mt-[64px] pt-[64px]" : ""}`}
+          className={`fixed bg-background inset-x-0 bottom-0 z-40 block lg:hidden top-16 ${isMutedNav ? "nature-code-bg -mt-[64px] pt-[64px]" : ""}`}
           style={
-            isNatureCode
+            isMutedNav
               ? {
                   background: "var(--nature-code-gradient)",
                   clipPath: "inset(64px 0 0 0)",
@@ -142,8 +140,8 @@ const Nav: React.FC = () => {
           }
         >
           <div className="flex h-full w-full flex-col justify-between text-left pt-[55px]">
-            {/* Hide Gradient on /nature-code */}
-            {!isNatureCode && (
+            {/* Hide Gradient on muted nav pages */}
+            {!isMutedNav && (
               <Gradient
                 className="-mt-[64px]"
                 style={{
@@ -154,12 +152,12 @@ const Nav: React.FC = () => {
             <nav className="px-7.5 md:px-8">
               <ul className="flex w-full flex-col overflow-y-auto">
                 <li
-                  className={`group/navitem relative ${isNatureCode ? "border-b border-muted/30" : "border-b"}`}
+                  className={`group/navitem relative ${isMutedNav ? "border-b border-muted/30" : "border-b"}`}
                 >
                   <Button
                     asChild
                     variant="ghost"
-                    className={`flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none transition-colors duration-200 h-auto justify-start ${isNatureCode ? "text-muted" : ""}`}
+                    className={`flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none transition-colors duration-200 h-auto justify-start ${isMutedNav ? "text-muted" : ""}`}
                   >
                     <Link to="/nature-code" onClick={toggleMenu}>
                       Nature Code
@@ -167,12 +165,12 @@ const Nav: React.FC = () => {
                   </Button>
                 </li>
                 <li
-                  className={`group/navitem relative ${isNatureCode ? "border-b border-muted/30" : "border-b"}`}
+                  className={`group/navitem relative ${isMutedNav ? "border-b border-muted/30" : "border-b"}`}
                 >
                   <Button
                     asChild
                     variant="ghost"
-                    className={`flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none  transition-colors duration-200  h-auto justify-start ${isNatureCode ? "text-muted" : ""}`}
+                    className={`flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none  transition-colors duration-200  h-auto justify-start ${isMutedNav ? "text-muted" : ""}`}
                   >
                     <Link to="/about" onClick={toggleMenu}>
                       About
@@ -180,12 +178,12 @@ const Nav: React.FC = () => {
                   </Button>
                 </li>
                 <li
-                  className={`group/navitem relative ${isNatureCode ? "border-b border-muted/30" : "border-b"}`}
+                  className={`group/navitem relative ${isMutedNav ? "border-b border-muted/30" : "border-b"}`}
                 >
                   <Button
                     asChild
                     variant="ghost"
-                    className={`flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none  transition-colors duration-200  h-auto justify-start ${isNatureCode ? "text-muted" : ""}`}
+                    className={`flex w-full items-center gap-x-1.5 rounded-full py-5 whitespace-pre text-lg leading-none  transition-colors duration-200  h-auto justify-start ${isMutedNav ? "text-muted" : ""}`}
                   >
                     <Link to="/timeline" onClick={toggleMenu}>
                       Timeline
