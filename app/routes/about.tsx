@@ -16,7 +16,7 @@ export default function About() {
     <>
       {/* Gradient Background Overlay */}
       <div
-        className="absolute top-0 left-0 right-0 h-[580px] md:h-[500px] z-0"
+        className="absolute top-0 left-0 right-0 h-[420px] md:h-[500px] z-0"
         style={{
           background: "var(--nature-code-gradient)",
         }}
@@ -24,11 +24,11 @@ export default function About() {
       <div className="relative">
         {/* Original Content */}
         <div className="container mx-auto px-8 py-16 relative z-10">
-          <header className="flex flex-col items-center justify-center text-center">
+          <header className="text-left md:text-center">
             <h1 className="secondary-title text-white mb-5">
               What&apos;s Green Hopes All About?
             </h1>
-            <p className="text-base lg:text-[18px] tracking-prose max-w-[24rem] md:max-w-[30rem] lg:max-w-[46.875rem] text-white/80">
+            <p className="text-base lg:text-[18px] tracking-prose max-w-[24rem] md:max-w-[30rem] lg:max-w-[46.875rem] sm:mx-auto text-white/80 ">
               Green Hopes empowers communities for a greener, sustainable future
               through nature code, reusable resources, education, and
               restoration. We unite people to take meaningful action for the

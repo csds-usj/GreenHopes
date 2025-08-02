@@ -38,16 +38,16 @@ export default function Testimonials() {
         }}
       />
       <div className="mx-auto max-w-[1216px] relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left px-6 ">
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="flex flex-col items-start h-full min-h-[220px] justify-between"
+              className="flex flex-col items-start h-full min-h-[112px] md:min-h-[220px] justify-between"
             >
-              <p className="text-lg md:text-2xl font-semibold [word-spacing:0.02em]">
+              <p className="text-xl md:text-2xl font-semibold [word-spacing:0.02em]">
                 “{t.quote}”
               </p>
-              <div className="mt-4 flex items-center gap-3 w-full">
+              <div className="mt-4 flex items-center gap-3 w-full mb-8 md:mb-0">
                 <img
                   alt={t.name}
                   loading="lazy"
