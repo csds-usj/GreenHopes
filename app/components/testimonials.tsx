@@ -1,7 +1,7 @@
 const testimonials = [
   {
     quote:
-      "The University of Sri Jayewardenepura is committed to academic excellence and innovation.",
+      "Green Hopes exemplifies our university's commitment to environmental stewardship. This innovative initiative empowers students to become sustainability champions, creating lasting impact beyond campus boundaries.",
     name: "Senior Professor Pathmalal M. Manage",
     title: (
       <>
@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     quote:
-      "The Career Guidance Unit empowers students to achieve their professional goals and aspirations.",
+      "Nature Code transforms environmental education through technology. Our students develop both digital literacy and ecological awareness, preparing them as responsible leaders for tomorrow's green economy.",
     name: "Dr. Eranga Jayasekara",
     title: (
       <>
@@ -27,7 +27,7 @@ const testimonials = [
   },
   {
     quote:
-      "The Career Guidance Unit empowers students to achieve their professional goals and aspirations.",
+      "Witnessing students engage with Green Hopes has been remarkable. They're not just learning about sustainability—they're actively building skills and networks that enhance their career prospects.",
     name: "Mrs. Chathurangani Tennakoon",
     title: (
       <>
@@ -54,7 +54,7 @@ export default function Testimonials() {
         }}
       />
       <div className="mx-auto max-w-[1216px] relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left px-6 md:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left px-6 md:px-0">
           {testimonials.map((t, i) => (
             <div
               key={i}
@@ -63,7 +63,7 @@ export default function Testimonials() {
               <p className="text-xl md:text-2xl font-semibold [word-spacing:0.02em]">
                 “{t.quote}”
               </p>
-              <div className="mt-4 flex items-center gap-3 w-full mb-8 md:mb-0">
+              <div className="mt-4 lg:mt-8 flex items-center gap-3 w-full mb-8 md:mb-0">
                 <img
                   alt={t.name}
                   loading="lazy"

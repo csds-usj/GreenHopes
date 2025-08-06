@@ -35,7 +35,7 @@ export const CardSwipe: React.FC<CarouselProps> = ({
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="size-full border-8 border-white rounded-[6px] shadow-2xl shadow-black/30">
+            <div className="size-full border-8 border-neutral-100 rounded-[6px] shadow-2xl shadow-black/30">
               <img
                 src={image.src}
                 width={500}

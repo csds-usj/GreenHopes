@@ -24,8 +24,11 @@ export const TimelineCard = ({ data }: TimelineProps) => {
                 <div className="size-3 rounded-full border bg-muted" />
               </div>
             </div>
+            <h3 className="hidden md:block text-xl w-[45%] md:pl-20 md:text-5xl font-bold tracking-tight -ml-8 -mt-1">
+              {item.title}
+            </h3>
             <div className="relative pl-10 pr-4 md:pl-4 w-full">
-              <h3 className=" block text-2xl md:text-5xl mb-4 -mt-1 text-left font-bold">
+              <h3 className="md:hidden block text-2xl md:text-5xl mb-4 -mt-1 text-left font-bold">
                 {item.title}
               </h3>
               {item.content}

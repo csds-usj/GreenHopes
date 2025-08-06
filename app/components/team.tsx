@@ -41,7 +41,7 @@ const teamMembers = [
 ];
 
 const Team = () => (
-  <div className="flex justify-center w-full py-16">
+  <div className="flex justify-center w-full py-20 md:py-24">
     <div className="w-full max-w-7xl">
       <h2 className="text-sm font-bold uppercase tracking-wide text-primary mb-8">
         Meet the team
