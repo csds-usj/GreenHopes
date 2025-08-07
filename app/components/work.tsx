@@ -2,17 +2,9 @@ import React from "react";
 import { Link } from "react-router";
 import { CtaButton } from "./ui/cta-button";
 import { CardSwipe } from "./ui/swiper";
+import { images } from "../../content/work";
 
 export default function Work() {
-  const images = [
-    { src: "/img/swiper/beach_1.jpg", alt: "Beach Cleanup 1" },
-    { src: "/img/swiper/beach_2.jpg", alt: "Beach Cleanup 2" },
-    { src: "/img/swiper/beach_3.jpg", alt: "Beach Cleanup 3" },
-    { src: "/img/swiper/beach_4.jpg", alt: "Beach Cleanup 4" },
-    { src: "/img/swiper/beach_5.jpg", alt: "Beach Cleanup 5" },
-    { src: "/img/swiper/beach_6.jpg", alt: "Beach Cleanup 6" },
-  ];
-
   return (
     <section className="w-full pt-34">
       <div className="mx-auto max-w-[1216px] px-6 md:px-0">
