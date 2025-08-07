@@ -1,7 +1,7 @@
 const testimonials = [
   {
     quote:
-      "Green Hopes exemplifies our university's commitment to environmental stewardship. This innovative initiative empowers students to become sustainability champions, creating lasting impact beyond campus boundaries.",
+      "Green Hopes embodies our university's commitment to sustainability, inspiring students and the community alike to engage actively in environmental stewardship through innovative education and conversation.",
     name: "Senior Professor Pathmalal M. Manage",
     title: (
       <>
@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     quote:
-      "Nature Code transforms environmental education through technology. Our students develop both digital literacy and ecological awareness, preparing them as responsible leaders for tomorrow's green economy.",
+      "Green Hopes integrates career skills with environmental responsibility, empowering students to lead sustainable change and develop a deep appreciation for nature’s value and protection.",
     name: "Dr. Eranga Jayasekara",
     title: (
       <>

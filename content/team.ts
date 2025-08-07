@@ -1,4 +1,29 @@
 export const teamMembers = [
+  // Chief Organizers
+  {
+    name: "Bhagya Cooray",
+    role: "Chief Organizer",
+    image: "/img/team/bhagyacooray.webp",
+    linkedin: "",
+  },
+  {
+    name: "W.A. Devni Tharaka",
+    role: "Chief Organizer",
+    image: "/img/team/dewnitharaka.webp",
+    linkedin: "https://www.linkedin.com/in/devni-tharaka-0301a72b2",
+  },
+  {
+    name: "N. Chamod Dilshan",
+    role: "Chief Organizer",
+    image: "/img/team/chamoddilshan.webp",
+    linkedin: "https://www.linkedin.com/in/chamod-dilshan-b7581b252",
+  },
+  {
+    name: "Pruthivi Thejan",
+    role: "Web Designer & Developer",
+    image: "/img/team/pruthivi.webp",
+    linkedin: "https://www.linkedin.com/in/pruthivithejan",
+  },
   // Leader
   {
     name: "Tharidu Diwakara",
@@ -10,7 +35,7 @@ export const teamMembers = [
 
   // Editorial Crew Head
   {
-    name: "G D C D Gunawardana",
+    name: "G.D.C.D. Gunawardana",
     role: "Editorial Crew Head",
     image: "/img/team/gdcdgunawardana.webp",
     linkedin:
@@ -34,7 +59,7 @@ export const teamMembers = [
     name: "D.A.I.M.Dolewaththa",
     role: "Editorial Crew Member",
     image: "/img/team/daimdolewaththa.webp",
-    linkedin: "www.linkedin.com/in/ishan-dolewaththa-2b63972a5",
+    linkedin: "https://www.linkedin.com/in/ishan-dolewaththa-2b63972a5",
   },
   {
     name: "S.A.K.Prabodani",
