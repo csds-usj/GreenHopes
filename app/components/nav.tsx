@@ -35,6 +35,35 @@ const Nav: React.FC = () => {
       >
         {/* Logo */}
         <Link
+          className="outline-offset-4 flex items-center mr-2"
+          to="https://www.sjp.ac.lk/"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/usjp.jpg"
+            alt="USJP Logo"
+            className="w-auto h-[32px] max-w-none rounded"
+            style={{ display: "block" }}
+          />
+          <span className="sr-only">University of Sri Jayewardenepura</span>
+        </Link>{" "}
+        {/* Slash SVG */}
+        <svg
+          fill="primary"
+          height="24"
+          shapeRendering="geometricPrecision"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+          viewBox="0 0 24 24"
+          width="24"
+          className={` ${isMutedNav ? "stroke-muted/20" : "stroke-foreground/20"}`}
+          style={{ width: 22, height: 22 }}
+        >
+          <path d="M16.88 3.549L7.12 20.451"></path>
+        </svg>
+        <Link
           to="/"
           className="flex items-center transition-colors mr-4 md:mr-12 flex-shrink-0"
         >
