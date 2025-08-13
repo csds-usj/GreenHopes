@@ -6,10 +6,14 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+// IMPORTANT: We purposely do NOT key off CLOUDFLARE_* database credentials here
+// because we still want to access a Cloudflare D1 database from Vercel without
+// engaging the Cloudflare runtime/vite plugin (which changes output layout).
+// Opt-in only via an explicit flag.
 const isCloudflare =
   process.env.CF_PAGES === "1" ||
-  Boolean(process.env.CLOUDFLARE_ACCOUNT_ID) ||
-  process.env.DEPLOY_TARGET === "cloudflare";
+  process.env.DEPLOY_TARGET === "cloudflare" ||
+  process.env.CLOUDFLARE_VITE === "1";
 
 export default defineConfig({
   plugins: [
