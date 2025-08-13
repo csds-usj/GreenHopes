@@ -6,15 +6,11 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typegen": "react-router typegen",
     "typecheck": "npm run typegen && tsc",
     "db:generate": "drizzle-kit generate:sqlite",
     "db:migrate": "bun run scripts/apply-migration.ts",
     "db:studio": "drizzle-kit studio",
-    "db:push": "drizzle-kit push:sqlite",
-    "db:migrate-data": "bun run scripts/migrate-to-turso.ts",
-    "db:setup-turso": "bun run scripts/setup-turso.ts",
-    "db:test-connection": "bun run scripts/test-turso-connection.ts"
+    "db:push": "drizzle-kit push:sqlite"
   },
   "dependencies": {    
     "@libsql/client": "^0.15.10",
@@ -26,6 +22,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-query": "^5.83.0",
     "@vercel/react-router": "^1.2.2",
+    "@react-router/node": "^7.7.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.44.4",
