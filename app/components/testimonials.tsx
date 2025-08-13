@@ -27,7 +27,7 @@ const testimonials = [
   },
   {
     quote:
-      "Witnessing students engage with Green Hopes has been remarkable. They're not just learning about sustainability—they're actively building skills and networks that enhance their career prospects.",
+      "Let us each reduce our use of harmful products and embrace sustainable practices in our daily lives—together, we can protect the Earth for generations to come.",
     name: "Mrs. Chathurangani Tennakoon",
     title: (
       <>
