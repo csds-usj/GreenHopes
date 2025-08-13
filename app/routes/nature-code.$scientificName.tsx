@@ -11,14 +11,11 @@ import {
 } from "~/components/ui/breadcrumb";
 
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import {
-  getPlantByScientificNameServer,
-  getPlantImageUrl,
-} from "~/lib/database.server";
-import { parseSlugToScientificName } from "~/lib/database";
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import type { Route } from "./+types/nature-code.$scientificName";
+import { getAllTrees } from "~/lib/db.server";
+import { parseSlugToScientificName } from "~/lib/database";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -43,12 +40,38 @@ export async function loader({ params }: Route.LoaderArgs) {
     // Parse the slug back to scientific name
     const parsedScientificName = parseSlugToScientificName(scientificName);
 
-    // Get plant data
-    const plant = await getPlantByScientificNameServer(parsedScientificName);
+    // Get all plants and find the matching one
+    const treeRecords = await getAllTrees();
+    
+    // Find the plant by matching the "cleaned" version of the database names
+    const matchingTree = treeRecords.find((tree) => {
+      const cleanedDbName = tree.scientificName
+        ?.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, "") // Remove special characters
+        .replace(/\s+/g, " ") // Normalize spaces
+        .trim();
+      const cleanedSearchName = parsedScientificName
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+      return cleanedDbName === cleanedSearchName;
+    });
 
-    if (!plant) {
+    if (!matchingTree) {
       throw new Response("Plant not found.", { status: 404 });
     }
+
+    const plant = {
+      id: matchingTree.id,
+      number: matchingTree.number || matchingTree.id,
+      name: matchingTree.name,
+      scientificName: matchingTree.scientificName,
+      group: matchingTree.group,
+      family: matchingTree.family,
+      descriptionMd: matchingTree.descriptionMd,
+      imageUrl: getPlantImageUrl(matchingTree.name),
+      category: matchingTree.category || "native",
+    };
 
     return { plant };
   } catch (error) {
@@ -56,6 +79,13 @@ export async function loader({ params }: Route.LoaderArgs) {
     if (error instanceof Response) throw error;
     throw new Response("Plant not found.", { status: 404 });
   }
+}
+
+// Helper function to get image URL from public directory using tree name directly
+function getPlantImageUrl(treeName: string | null): string {
+  if (!treeName) return "";
+  // Use tree name directly as filename
+  return `/img/${treeName}.webp`;
 }
 
 const categoryColors = {

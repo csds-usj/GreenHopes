@@ -16,7 +16,7 @@
     "db:setup-turso": "bun run scripts/setup-turso.ts",
     "db:test-connection": "bun run scripts/test-turso-connection.ts"
   },
-  "dependencies": {
+  "dependencies": {    
     "@libsql/client": "^0.15.10",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
