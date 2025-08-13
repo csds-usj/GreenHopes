@@ -37,7 +37,7 @@ class D1HttpClient {
       );
     }
 
-  const data: any = await response.json();
+    const data: any = await response.json();
     return {
       results: data.result[0]?.results || [],
       success: data.success,
@@ -53,7 +53,9 @@ export async function loader({ request, context }: Route.LoaderArgs) {
     const token = process.env.CLOUDFLARE_D1_TOKEN;
 
     if (!accountId || !databaseId || !token) {
-      console.warn("D1 credentials missing; returning empty list instead of 500");
+      console.warn(
+        "D1 credentials missing; returning empty list instead of 500"
+      );
       return Response.json([]);
     }
 

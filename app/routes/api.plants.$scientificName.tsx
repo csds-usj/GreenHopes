@@ -37,7 +37,7 @@ class D1HttpClient {
       );
     }
 
-  const data: any = await response.json();
+    const data: any = await response.json();
     return {
       results: data.result[0]?.results || [],
       success: data.success,
@@ -130,7 +130,10 @@ export async function loader({ params, context }: Route.LoaderArgs) {
 
     return Response.json(plant);
   } catch (error) {
-    console.error("Unhandled error in /api/plants/:scientificName loader:", error);
+    console.error(
+      "Unhandled error in /api/plants/:scientificName loader:",
+      error
+    );
     if (error instanceof Response) throw error;
     throw new Response("Plant not found", { status: 404 });
   }
