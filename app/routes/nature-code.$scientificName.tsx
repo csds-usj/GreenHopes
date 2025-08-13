@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
-import { Link } from "react-router";
+import { useParams, Link, useLoaderData } from "react-router";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import {
@@ -18,7 +16,7 @@ import {
   parseSlugToScientificName,
   getPlantImageUrl,
 } from "~/lib/database";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import type { Route } from "./+types/nature-code.$scientificName";
 
@@ -33,6 +31,33 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+// Server-side data loading
+export async function loader({ params }: Route.LoaderArgs) {
+  try {
+    const { scientificName } = params;
+
+    if (!scientificName) {
+      throw new Response("Invalid plant identifier.", { status: 400 });
+    }
+
+    // Parse the slug back to scientific name
+    const parsedScientificName = parseSlugToScientificName(scientificName);
+
+    // Get plant data
+    const plant = await getPlantByScientificName(parsedScientificName);
+
+    if (!plant) {
+      throw new Response("Plant not found.", { status: 404 });
+    }
+
+    return { plant };
+  } catch (error) {
+    console.error("Error loading plant:", error);
+    if (error instanceof Response) throw error;
+    throw new Response("Plant not found.", { status: 404 });
+  }
+}
+
 const categoryColors = {
   native: "bg-green-500 hover:bg-green-600 text-white",
   endemic: "bg-yellow-500 hover:bg-yellow-600 text-black",
@@ -41,52 +66,8 @@ const categoryColors = {
 };
 
 const PlantDetail = () => {
-  const { scientificName } = useParams();
-
-  if (!scientificName) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-red-600">Invalid plant identifier.</p>
-      </div>
-    );
-  }
-
-  const parsedScientificName = parseSlugToScientificName(scientificName);
-
-  const {
-    data: plant,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["plant", parsedScientificName],
-    queryFn: () => getPlantByScientificName(parsedScientificName),
-  });
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error || !plant) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center py-8">
-          <p className="text-red-600 mb-4">
-            Plant not found or error loading plant details.
-          </p>
-          <Button asChild>
-            <Link to="/nature-code">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Nature Code
-            </Link>
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  // Get data from loader
+  const { plant } = useLoaderData<typeof loader>();
 
   const imageUrl = getPlantImageUrl(plant.name);
 

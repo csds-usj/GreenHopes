@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Input } from "~/components/ui/input";
 import {
@@ -12,8 +11,8 @@ import {
 // Removed Select import to use native HTML select instead
 import PlantCard from "~/components/plant-card";
 import { getAllPlants } from "~/lib/database";
-import { Loader2 } from "lucide-react";
 import type { Route } from "./+types/nature-code-index";
+import { useLoaderData } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -24,6 +23,17 @@ export function meta({}: Route.MetaArgs) {
         "Nature Code is a green innovation by the Career Skills Development Society that lets you scan QR codes on trees to discover species info, environmental value, and ways to protect them. The site also lets you search and filter plant data — turning every tree into a story worth discovering.",
     },
   ];
+}
+
+// Server-side data loading
+export async function loader() {
+  try {
+    const plants = await getAllPlants();
+    return { plants };
+  } catch (error) {
+    console.error("Error loading plants:", error);
+    return { plants: [] };
+  }
 }
 
 // Helper function to normalize category for consistent filtering
@@ -42,14 +52,8 @@ const NatureCodeIndex = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
 
-  const {
-    data: plants,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["plants"],
-    queryFn: getAllPlants,
-  });
+  // Get data from loader
+  const { plants } = useLoaderData<typeof loader>();
 
   const filteredPlants = plants?.filter((plant) => {
     const matchesSearch =
@@ -63,24 +67,6 @@ const NatureCodeIndex = () => {
 
     return matchesSearch && matchesCategory;
   });
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-8">
-        <p className="text-red-600">
-          Error loading plants. Please try again later.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <>
