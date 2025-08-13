@@ -58,7 +58,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           style={{ background: "var(--background-gradient)" }}
         >
           <header className="bg-background px-safe pt-safe lg:h-16 flex justify-center mt-4 px-7.5 ">
-            <Gradient />
+            <Gradient className="z-50" />
             <Nav />
           </header>
           <div className="min-h-screen ">{children}</div>
