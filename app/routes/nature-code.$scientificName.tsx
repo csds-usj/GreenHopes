@@ -12,10 +12,10 @@ import {
 
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
-  getPlantByScientificName,
-  parseSlugToScientificName,
+  getPlantByScientificNameServer,
   getPlantImageUrl,
-} from "~/lib/database";
+} from "~/lib/database.server";
+import { parseSlugToScientificName } from "~/lib/database";
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import type { Route } from "./+types/nature-code.$scientificName";
@@ -44,7 +44,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     const parsedScientificName = parseSlugToScientificName(scientificName);
 
     // Get plant data
-    const plant = await getPlantByScientificName(parsedScientificName);
+    const plant = await getPlantByScientificNameServer(parsedScientificName);
 
     if (!plant) {
       throw new Response("Plant not found.", { status: 404 });

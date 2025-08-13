@@ -1,7 +1,3 @@
-import { getAllTrees, getTreeByScientificName } from "./db.server";
-import { eq } from "drizzle-orm";
-import { trees } from "drizzle/schema";
-
 interface Plant {
   id: number;
   number: number;
@@ -14,22 +10,14 @@ interface Plant {
   category: "native" | "endemic" | "exotic" | "poisonous";
 }
 
-// Updated to use server-side Turso database
+// Client-safe API functions
 export async function getAllPlants(): Promise<Plant[]> {
   try {
-    const treeRecords = await getAllTrees();
-    
-    return treeRecords.map((tree) => ({
-      id: tree.id,
-      number: tree.number || tree.id,
-      name: tree.name,
-      scientificName: tree.scientificName,
-      group: tree.group,
-      family: tree.family,
-      descriptionMd: tree.descriptionMd,
-      imageUrl: getPlantImageUrl(tree.name),
-      category: tree.category || "native",
-    }));
+    const response = await fetch("/api/plants");
+    if (!response.ok) {
+      throw new Error("Failed to fetch plants");
+    }
+    return response.json();
   } catch (error) {
     console.error("Error fetching plants:", error);
     throw new Error("Failed to fetch plants");
@@ -40,46 +28,12 @@ export async function getPlantByScientificName(
   scientificName: string
 ): Promise<Plant | null> {
   try {
-    // First try exact match
-    let result = await getTreeByScientificName(scientificName);
-    
-    if (result.length === 0) {
-      // If no exact match, get all plants and find by cleaned name
-      const allTrees = await getAllTrees();
-      const matchingTree = allTrees.find((tree) => {
-        const cleanedDbName = tree.scientificName
-          ?.toLowerCase()
-          .replace(/[^a-z0-9\s]/g, "") // Remove special characters
-          .replace(/\s+/g, " ") // Normalize spaces
-          .trim();
-        const cleanedSearchName = scientificName
-          .toLowerCase()
-          .replace(/\s+/g, " ")
-          .trim();
-        return cleanedDbName === cleanedSearchName;
-      });
-      
-      if (matchingTree) {
-        result = [matchingTree];
-      }
-    }
-    
-    if (result.length === 0) {
+    const slug = createPlantSlug(scientificName);
+    const response = await fetch(`/api/plants/${slug}`);
+    if (!response.ok) {
       return null;
     }
-    
-    const tree = result[0];
-    return {
-      id: tree.id,
-      number: tree.number || tree.id,
-      name: tree.name,
-      scientificName: tree.scientificName,
-      group: tree.group,
-      family: tree.family,
-      descriptionMd: tree.descriptionMd,
-      imageUrl: getPlantImageUrl(tree.name),
-      category: tree.category || "native",
-    };
+    return response.json();
   } catch (error) {
     console.error("Error fetching plant:", error);
     return null;

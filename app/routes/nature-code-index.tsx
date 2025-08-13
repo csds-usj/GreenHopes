@@ -10,7 +10,7 @@ import {
 
 // Removed Select import to use native HTML select instead
 import PlantCard from "~/components/plant-card";
-import { getAllPlants } from "~/lib/database";
+import { getAllPlantsServer } from "~/lib/database.server";
 import type { Route } from "./+types/nature-code-index";
 import { useLoaderData } from "react-router";
 
@@ -28,7 +28,7 @@ export function meta({}: Route.MetaArgs) {
 // Server-side data loading
 export async function loader() {
   try {
-    const plants = await getAllPlants();
+    const plants = await getAllPlantsServer();
     return { plants };
   } catch (error) {
     console.error("Error loading plants:", error);
