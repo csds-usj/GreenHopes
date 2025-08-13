@@ -37,7 +37,7 @@ class D1HttpClient {
       );
     }
 
-    const data = await response.json();
+  const data: any = await response.json();
     return {
       results: data.result[0]?.results || [],
       success: data.success,
@@ -53,20 +53,21 @@ export async function loader({ request, context }: Route.LoaderArgs) {
     const token = process.env.CLOUDFLARE_D1_TOKEN;
 
     if (!accountId || !databaseId || !token) {
-      console.error(
-        "Missing Cloudflare D1 credentials in environment variables"
-      );
-      return Response.json(
-        { error: "Database credentials not available" },
-        { status: 500 }
-      );
+      console.warn("D1 credentials missing; returning empty list instead of 500");
+      return Response.json([]);
     }
 
     // Create D1 HTTP client and execute query directly
     const d1Client = new D1HttpClient(accountId, databaseId, token);
 
     // Fetch all plants from database using D1 HTTP API
-    const result = await d1Client.execute("SELECT * FROM trees");
+    let result;
+    try {
+      result = await d1Client.execute("SELECT * FROM trees");
+    } catch (cfErr) {
+      console.error("Cloudflare D1 query failed, returning empty list:", cfErr);
+      return Response.json([]);
+    }
     const treeRecords = result.results;
 
     // Transform database records to match our Plant interface
@@ -86,8 +87,8 @@ export async function loader({ request, context }: Route.LoaderArgs) {
 
     return Response.json(plants);
   } catch (error) {
-    console.error("Error fetching plants:", error);
-    return Response.json({ error: "Failed to fetch plants" }, { status: 500 });
+    console.error("Unhandled error in /api/plants loader:", error);
+    return Response.json([]);
   }
 }
 

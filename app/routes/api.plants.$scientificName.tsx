@@ -37,7 +37,7 @@ class D1HttpClient {
       );
     }
 
-    const data = await response.json();
+  const data: any = await response.json();
     return {
       results: data.result[0]?.results || [],
       success: data.success,
@@ -58,13 +58,8 @@ export async function loader({ params, context }: Route.LoaderArgs) {
     const token = process.env.CLOUDFLARE_D1_TOKEN;
 
     if (!accountId || !databaseId || !token) {
-      console.error(
-        "Missing Cloudflare D1 credentials in environment variables"
-      );
-      return Response.json(
-        { error: "Database credentials not available" },
-        { status: 500 }
-      );
+      console.warn("D1 credentials missing; returning 404 for plant");
+      throw new Response("Plant not found", { status: 404 });
     }
 
     // Create D1 HTTP client and execute query directly
@@ -75,10 +70,16 @@ export async function loader({ params, context }: Route.LoaderArgs) {
     // So we need to find the plant by matching the "cleaned" version of the database names
 
     // First try exact match
-    let result = await d1Client.execute(
-      "SELECT * FROM trees WHERE LOWER(scientific_name) = LOWER(?)",
-      [parsedScientificName]
-    );
+    let result;
+    try {
+      result = await d1Client.execute(
+        "SELECT * FROM trees WHERE LOWER(scientific_name) = LOWER(?)",
+        [parsedScientificName]
+      );
+    } catch (cfErr) {
+      console.error("Cloudflare D1 specific plant query failed:", cfErr);
+      throw new Response("Plant not found", { status: 404 });
+    }
 
     // If no exact match, try matching by cleaning the database scientific_name
     if (result.results.length === 0) {
@@ -129,10 +130,8 @@ export async function loader({ params, context }: Route.LoaderArgs) {
 
     return Response.json(plant);
   } catch (error) {
-    console.error("Error fetching plant:", error);
-    if (error instanceof Response) {
-      throw error;
-    }
-    return Response.json({ error: "Failed to fetch plant" }, { status: 500 });
+    console.error("Unhandled error in /api/plants/:scientificName loader:", error);
+    if (error instanceof Response) throw error;
+    throw new Response("Plant not found", { status: 404 });
   }
 }
